@@ -1,5 +1,5 @@
 """
-Projeto de um leitor de DANFE usando a biblioteca xmltodict, pandas e tkinter
+Projeto de um leitor de DANFE .xml usando a biblioteca xmltodict, pandas e tkinter
 
 - O sistema lerá arquivos DANFE em busca de informações específicas
 - imprimirá essas informações numa GUI feita com TKinter
