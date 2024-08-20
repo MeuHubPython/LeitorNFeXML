@@ -57,6 +57,8 @@ class MainController:
 
             self.view.date.config(text=f'Data da nota: {self.model.date_format}')
             self.view.total.config(text=f'Valor total da nota: R${self.model.total_value}')
+            self.view.product_code.config(text=f'Código do produto: {self.model.product_code}')
+            self.view.product_name.config(text=f'{self.model.product_name}')
             self.information = True
             
             return self.information

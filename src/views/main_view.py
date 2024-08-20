@@ -12,10 +12,12 @@ class MainView(Frame):
         self.create_label_files()
 
     def create_widgets(self):
+        
+        """
+        create_widgets inicia a primeira etapa de widgets, para a busca do diretório dos arquivos
+        """
 
-        """create_widgets inicia a primeira etapa de widgets, para a busca do diretório dos arquivos"""
-
-        self.main_label = Label(self, text='Leitor de DANFE', font='Roboto 15', pady=15)
+        self.main_label = Label(self, text='Leitor de DANFE .xml', font='Roboto 15', pady=15)
         self.main_label.grid(row=0, column=1)
 
         self.label_dir = Label(self, text='Selecione o caminho da pasta: ', font='Roboto 11')
@@ -28,8 +30,10 @@ class MainView(Frame):
         self.search_dir.grid(row=1, column=2, padx=5)
         
     def create_label_files(self):
-
-        """create_label_files inicia a segunda etapa de widgets, pede ao usuário para selecionar um arquivo .xml contido no diretório escolhido na etapa anterior"""
+        
+        """
+        create_label_files inicia a segunda etapa de widgets, pede ao usuário para selecionar um arquivo .xml contido no diretório escolhido na etapa anterior
+        """
 
         self.label_radio = Label(self, text='Selecione o arquivo XML que deseja abrir: ', font='Roboto 11')
         self.label_radio.grid(row=2, column=0)
@@ -42,7 +46,9 @@ class MainView(Frame):
     
     def search_information_xml(self, reset=False):
 
-        """search_information_xml é a etapa final de widgets, exibe na interface gráfica toda a informação da NFe"""
+        """
+        search_information_xml é a etapa final de widgets, exibe na interface gráfica toda a informação da NFe
+        """
 
         if reset == True:
             self.seller_cnpj.config(text='')
@@ -53,6 +59,9 @@ class MainView(Frame):
 
             self.date.config(text='')
             self.total.config(text='')
+
+            self.product_code.config(text='')
+            self.product_name.config(text='')
 
         else:
             self.blank_label = Label(self, text='')
@@ -75,3 +84,15 @@ class MainView(Frame):
     
             self.total = Label(self, font='Roboto 11')
             self.total.grid(row=5, column=2)
+
+            self.blank = Label(self, text='')
+            self.blank.grid(row=6, column=1)
+
+            self.product_code = Label(self, font="Roboto 11")
+            self.product_code.grid(row=7, column=0)
+            
+            self.product_name = Label(self, font="Roboto 11", width=55, justify='left')
+            self.product_name.grid(row=8, column=0)
+
+
+           

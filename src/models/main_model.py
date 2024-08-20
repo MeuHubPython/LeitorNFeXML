@@ -13,7 +13,10 @@ class MainModel:
         self.buyers_cnpj = ''
         self.date_format = ''
         self.total_value = ''
-        self.produtos = []
+        self.product_name = ''
+        self.product_code = ''
+        self.index = 0
+        self.itens = []
 
     def path_dir(self):
 
@@ -32,13 +35,9 @@ class MainModel:
        return self.archives
     
     def search_information_on_file(self, path_file):
-
+        
         """Função que abre o arquivo selecionado pelo usuário e extrai do xml as informações mais importantes da nota"""
         
-        class Product:
-            def __init__(self, name, quantity) -> None:
-                pass
-
         with open(f'{path_file}', 'rb') as selected_file:
             selected_xml = xmltodict.parse(selected_file)
             xml = selected_xml['nfeProc']['NFe']['infNFe']
@@ -59,6 +58,14 @@ class MainModel:
             buy_date = xml['ide']['dhEmi'][0:10]
             self.date_format = f'{buy_date[8:10]}/{buy_date[5:7]}/{buy_date[0:4]}'
             self.total_value = xml['total']['ICMSTot']['vNF']
-        
-            for product in xml['det']:
-                print(f"\n{product}")
+            
+            try:
+                self.product_code = xml['det']['prod']['cProd']
+                self.product_name = xml['det']['prod']['xProd']
+
+            except TypeError:
+                for indice in range(len(xml['det'])):
+                    self.product_name = xml['det'][indice]['prod']['xProd']
+                    self.product_code = xml['det'][indice]['prod']['cProd']
+                    if indice == 12:
+                        break
